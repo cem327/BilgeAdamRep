@@ -1,0 +1,63 @@
+package org.example;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Arrays;
+import java.util.Random;
+import java.util.Scanner;
+
+public class Q49 {
+    public static void main(String[] args) {
+
+        System.out.println("Tahminleriniz : " + Arrays.toString(sayiAl()));
+
+
+
+
+    }
+    public static int sayiUret(){
+
+        Random rand = new Random();
+
+        return rand.nextInt(1,750);
+
+    }
+    public static int @NotNull [] sayiAl(){
+
+        Scanner sc = new Scanner(System.in);
+
+        int haklar = 5;
+        int[] tahminlerim = new int[haklar];
+        int s1 = sayiUret();
+
+        for(int i=0;i<haklar;i++){
+
+            System.out.print("1 ve 750 arasinda bir sayi tahmininde bulununuz : ");
+            int tahmin = sc.nextInt();
+
+
+            tahminlerim[i] = tahmin;
+
+            if (tahmin == s1){
+
+
+                System.out.println("Tahmininiz dogru. Tebrikler! ");
+                return tahminlerim;
+            }
+            else if(sayiUret()>tahmin) {
+
+                System.out.println("Tahmin ettiginiz sayi uretilenden kucuk. Tahmininizi arttirin.");
+            }
+            else if(sayiUret()<tahmin){
+
+                System.out.println("Tahmin ettiginiz sayi uretilenden buyuk. Tahmininizi azaltin.");
+            }
+        }
+
+        System.out.println();
+        System.out.println("Sayiyi dogru tahmin edemediniz :(  ");
+        System.out.println();
+        System.out.println("Uretilen sayi " + s1 + " idi.");
+        return tahminlerim;
+    }
+}
